@@ -11,10 +11,10 @@ function Feature() {
           </div>
           <div className="flex gap-2 flex-col">
             <h2 className="text-3xl md:text-5xl tracking-tighter lg:max-w-xl font-open-sans-custom text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
-              Ключевые функции
+              Почему JoyWorld?
             </h2>
             <p className="text-lg max-w-xl lg:max-w-xl leading-relaxed tracking-tight text-gray-300 font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-              Откройте мощные возможности, которые делают нашу платформу лучшим выбором для вашего бизнеса.
+              Мы объединяем людей через радость, искренность и открытый диалог — вне зависимости от убеждений и взглядов.
             </p>
           </div>
           <div className="flex gap-10 pt-12 flex-col w-full">
@@ -22,52 +22,52 @@ function Feature() {
               <div className="flex flex-row gap-6 w-full items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Командная работа</p>
+                  <p className="text-white font-open-sans-custom">Позитивные пранки</p>
                   <p className="text-gray-300 text-sm font-open-sans-custom">
-                    Удобное и эффективное взаимодействие в команде.
+                    Делитесь весёлыми историями, которые объединяют, а не обижают.
                   </p>
                 </div>
               </div>
               <div className="flex flex-row gap-6 items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Автоматизация</p>
+                  <p className="text-white font-open-sans-custom">Диалог о смысле жизни</p>
                   <p className="text-gray-300 text-sm font-open-sans-custom">
-                    Мощная и простая автоматизация рабочих процессов.
+                    Пространство для глубоких вопросов без осуждения и давления.
                   </p>
                 </div>
               </div>
               <div className="flex flex-row gap-6 items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Масштабируемость</p>
+                  <p className="text-white font-open-sans-custom">Межрелигиозный диалог</p>
                   <p className="text-gray-300 text-sm font-open-sans-custom">
-                    Инфраструктура, растущая вместе с вашими потребностями.
+                    Узнавайте традиции разных культур, находите общее и уникальное.
                   </p>
                 </div>
               </div>
               <div className="flex flex-row gap-6 w-full items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Безопасность</p>
-                  <p className="text-gray-300 text-sm font-open-sans-custom">Надежная и комплексная защита данных.</p>
+                  <p className="text-white font-open-sans-custom">Живые сообщества</p>
+                  <p className="text-gray-300 text-sm font-open-sans-custom">Находите единомышленников по интересам и ценностям.</p>
                 </div>
               </div>
               <div className="flex flex-row gap-6 items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Код-ревью</p>
+                  <p className="text-white font-open-sans-custom">Безопасная среда</p>
                   <p className="text-gray-300 text-sm font-open-sans-custom">
-                    Интуитивный и эффективный обзор кода.
+                    Модерация и правила уважительного общения.
                   </p>
                 </div>
               </div>
               <div className="flex flex-row gap-6 items-start">
                 <Check className="w-[1.05rem] h-[1.05rem] mt-2 text-white" strokeWidth={3} />
                 <div className="flex flex-col gap-1">
-                  <p className="text-white font-open-sans-custom">Облачный деплой</p>
+                  <p className="text-white font-open-sans-custom">Мероприятия и события</p>
                   <p className="text-gray-300 text-sm font-open-sans-custom">
-                    Быстрое и надежное развертывание в облаке.
+                    Онлайн и офлайн встречи, квизы, флешмобы и дискуссии.
                   </p>
                 </div>
               </div>
