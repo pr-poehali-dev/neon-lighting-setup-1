@@ -28,7 +28,7 @@ def handler(event: dict, context) -> dict:
         return {
             'statusCode': 400,
             'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'Заполните все поля'})
+            'body': json.dumps({'error': 'Заполните все поля'}, ensure_ascii=False)
         }
 
     smtp_host = os.environ.get('SMTP_HOST', 'smtp.yandex.ru')

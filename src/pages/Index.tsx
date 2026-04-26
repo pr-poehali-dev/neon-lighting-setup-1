@@ -11,13 +11,37 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { MailIcon, PhoneIcon, MapPinIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import func2url from "../../backend/func2url.json"
 
 export default function Index() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const pricingSectionRef = useRef<HTMLDivElement>(null)
   const aboutSectionRef = useRef<HTMLDivElement>(null)
   const contactSectionRef = useRef<HTMLDivElement>(null)
+
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormStatus('loading')
+    try {
+      const res = await fetch(func2url.contact, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
+  }
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
@@ -278,13 +302,16 @@ export default function Index() {
                 },
               ]}
             >
-              <form action="" className="w-full space-y-4">
+              <form onSubmit={handleSubmit} className="w-full space-y-4">
                 <div className="flex flex-col gap-2">
                   <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
                     Имя
                   </Label>
                   <Input
                     type="text"
+                    required
+                    value={formData.name}
+                    onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
                 </div>
@@ -294,15 +321,9 @@ export default function Index() {
                   </Label>
                   <Input
                     type="email"
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
-                    Телефон
-                  </Label>
-                  <Input
-                    type="tel"
+                    required
+                    value={formData.email}
+                    onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
                 </div>
@@ -310,13 +331,25 @@ export default function Index() {
                   <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
                     Сообщение
                   </Label>
-                  <Textarea className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]" />
+                  <Textarea
+                    required
+                    value={formData.message}
+                    onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
+                  />
                 </div>
+                {formStatus === 'success' && (
+                  <p className="text-green-400 text-sm font-open-sans-custom">Сообщение отправлено! Мы свяжемся с вами.</p>
+                )}
+                {formStatus === 'error' && (
+                  <p className="text-red-400 text-sm font-open-sans-custom">Ошибка отправки. Попробуйте ещё раз.</p>
+                )}
                 <Button
                   className="w-full bg-white text-black hover:bg-gray-100 [text-shadow:_0_1px_2px_rgb(0_0_0_/_10%)] font-open-sans-custom"
-                  type="button"
+                  type="submit"
+                  disabled={formStatus === 'loading'}
                 >
-                  Отправить
+                  {formStatus === 'loading' ? 'Отправка...' : 'Отправить'}
                 </Button>
               </form>
             </ContactCard>
